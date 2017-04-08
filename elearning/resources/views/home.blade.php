@@ -35,7 +35,7 @@
                         <h1>Administrador - {{ Auth::user()->name }}</h1>
                             <div id="menu_edicion_usuarios">
                                 <h3>Editar Usuarios</h3>
-                                <a class="btn btn-default" id="boton_agregar_usuario">Agregar Nuevo Usuario +</a>
+                                <a href="/create_user" class="btn btn-default" id="boton_agregar_usuario">Agregar Nuevo Usuario +</a>
                             </div>
                             <div id="menu_edicion_cursos">
                                 <h3>Editar Cursos</h3>
