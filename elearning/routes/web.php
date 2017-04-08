@@ -19,6 +19,16 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+/*Route::get('/home', ['middleware' => 'checkAdmin', function () {
+	return view('dashboard');
+
+}]);*/
+/*Route::get('/management', [
+    'middleware' => 'checkAdmin',
+    'uses' => 'UserController@showProfile'
+]);*/
+
+///Auth::routes();
+
+//Route::get('/home', 'HomeController@index');

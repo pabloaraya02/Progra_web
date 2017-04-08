@@ -23,6 +23,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        if("lll" == "Costa Rica"){
+            return view('dashboard');
+        }else{
+            return view('home');    
+        }
+        
     }
 }

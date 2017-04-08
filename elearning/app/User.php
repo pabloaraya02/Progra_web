@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password'
     ];
 
     /**
@@ -29,4 +29,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function Role(){
+
+        return $this->belongsToMany('App\Role','user_role');
+    }
+    public function isAdmin() {
+        //return in_array(1, $this->roles()->pluck('role_id')->all());
+        return $this->Role()->where('role_id', 1)->first();
+    }
 }
