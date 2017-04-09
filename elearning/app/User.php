@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password'
+        'name', 'password', 'email', 'sex', 'country'
     ];
 
     /**
@@ -30,12 +30,51 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function Role(){
+    public function roles(){
 
-        return $this->belongsToMany('App\Role','user_role');
+        return $this->belongsToMany('App\Role','user_role','id_user','id_role');
     }
-    public function isAdmin() {
+    public function amIAdmin() {
+
+        $admin = false;
+        foreach($this->roles as $role){
+            if($role->name == "Admin"){
+                $admin = true;
+                break;
+            }
+        }
+        return $admin;
+         
+    }
+    public function amIStudent() {
         //return in_array(1, $this->roles()->pluck('role_id')->all());
-        return $this->Role()->where('role_id', 1)->first();
+        $admin = $this->roles->where('role_id', 1)->first();
+
+        if($admin == 'Admin'){
+            return true;
+
+        }else{
+
+            return false;
+        }
+         
+    }
+    public function amITeacher() {
+        //return in_array(1, $this->roles()->pluck('role_id')->all());
+        $admin = $this->roles->where('role_id', 1)->first();
+
+        if($admin == 'Admin'){
+            return true;
+
+        }else{
+
+            return false;
+        }
+         
+    }
+    public function hasRole($role)
+    {
+        return User::where('name', $role)->get();
+        //return Role::where('name', $role)->where('id_user', $userID)->get();
     }
 }

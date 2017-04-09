@@ -25,6 +25,13 @@ class putAdminUsers extends Seeder
             "sex" => "Male",
             "country" => "Costa Rica"
         ]);
+        DB::table('users')->insert([    
+            "name" => "Eduardo Villegas",
+            "password" => bcrypt("admin1"),
+            "email" => "eduardo2@gmail.com",
+            "sex" => "Male",
+            "country" => "Costa Rica"
+        ]);
         
     }
 }

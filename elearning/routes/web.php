@@ -19,4 +19,19 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
+//Route::get('/managment', 'controllerTest@index');
+
+
+Route::get('/managment', ['middleware' => 'checkAdmin:"Admin"', function () {
+    //$user = App\User::find(Auth::id());
+    $user = App\User::find(Auth::id());
+    return view('dashboard',compact('user'));
+}])->name('managment');
+
+Route::resource('user', 'UserCrudController');
+
+
+/*Route::resource('user', 
+	['middleware' => 'auth',
+	 'uses' => 'UserCrudController']);*/
 

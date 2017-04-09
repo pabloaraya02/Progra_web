@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+//use Auth;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,6 +14,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        //$this->middleware('checkAdmin');
     }
 
     /**
@@ -23,11 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if("lll" == "Costa Rica"){
-            return view('dashboard');
-        }else{
-            return view('home');    
-        }
-        
+       return view('home');
+       //return redirect('managment'); 
     }
 }

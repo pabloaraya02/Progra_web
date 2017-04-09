@@ -3,9 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use DB;
+use Session;
 
-class UserController extends Controller
+
+class UserCrudController extends Controller
 {
+    public function __construct(){
+        $this->middleware('checkAdmin:"Admin"');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +20,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //$user = DB::table('semana')->get();
+        //
+        $users = User::orderBy('created_at','desc')->get();
+        return view('user.userIndex', compact('users'));
     }
 
     /**
@@ -23,7 +32,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $roles = DB::table('role')->get();
+        return view('user.userCreate', compact('roles'));
+        
     }
 
     /**
@@ -35,6 +46,33 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+
+       
+        $rules = array(
+            'name' => 'required|alpha_num|min:3|max:32',
+            'email' => 'required|email',
+            'password' => 'required|min:3|confirmed',
+            'password_confirmation' => 'required|min:3',
+            'id_role' => 'required'
+
+        );
+        $this->validate($request, $rules);
+
+        
+        $user = $request->all();
+        
+        
+
+        //$theNewUser = DB::table('users')->where('email', '=', $request()->email())->get();
+        
+        $theNewUser = User::create($user);
+        $theNewUserID = $theNewUser->id_user;
+        $theRoleID = $request->input();
+        $theNewUser->roles()->attach($theNewUserID,['status' => 1]);
+        
+        
+        Session::flash('message', 'Resource Created Successfully!');
+        return redirect('managment');
     }
 
     /**

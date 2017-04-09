@@ -22,5 +22,10 @@ class assingAdminRoleToAdmins extends Seeder
             "id_role" => 1, //admin
             "status" => true
         ]);
+        DB::table('user_role')->insert([    
+            "id_user" => 3, //eduardo
+            "id_role" => 2, //admin
+            "status" => true
+        ]);
     }
 }
