@@ -77,4 +77,18 @@ class User extends Authenticatable
         return User::where('name', $role)->get();
         //return Role::where('name', $role)->where('id_user', $userID)->get();
     }
+  /*  public function setPasswordAttribute($password)
+    {   
+        
+        if (Hash::check('plain-text', $password)) {
+    // The passwords match...
+            $this->attributes['password'] = bcrypt($password);
+        }
+    }
+*/
+    public function setPasswordAttribute($pass){
+
+        $this->attributes['password'] = bcrypt($pass);
+
+    }
 }

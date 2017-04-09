@@ -46,7 +46,11 @@ class UserCrudController extends Controller
     public function store(Request $request)
     {
         //
-
+ /*User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+        ]);*/
        
         $rules = array(
             'name' => 'required|alpha_num|min:3|max:32',
@@ -67,8 +71,9 @@ class UserCrudController extends Controller
         
         $theNewUser = User::create($user);
         $theNewUserID = $theNewUser->id_user;
-        $theRoleID = $request->input();
-        $theNewUser->roles()->attach($theNewUserID,['status' => 1]);
+        $theRoleID = $request->input('id_role');
+
+        $theNewUser->roles()->attach($theRoleID,['status' => 1]);
         
         
         Session::flash('message', 'Resource Created Successfully!');
