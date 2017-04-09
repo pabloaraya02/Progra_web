@@ -88,7 +88,7 @@
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="{{ route('managment') }}">
-                        {{ Auth::user()->name }}
+                        Gestionar:
                     </a>
                 </li>
                 <li>
