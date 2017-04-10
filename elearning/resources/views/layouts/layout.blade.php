@@ -95,7 +95,7 @@
                     <a href="{{route('user.index')}}">Usuarios</a>
                 </li>
                 <li>
-                    <a href="#">Cursos</a>
+                    <a href="{{route('course.index')}}">Cursos</a>
                 </li>
                 <li>
                     <a href="#">Roles</a>
