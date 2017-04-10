@@ -34,6 +34,10 @@ class User extends Authenticatable
 
         return $this->belongsToMany('App\Role','user_role','id_user','id_role');
     }
+
+    public function matricula(){
+        return $this->belongsTi('App\Enrollment');
+    }
     public function amIAdmin() {
 
         $admin = false;

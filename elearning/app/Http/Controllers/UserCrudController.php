@@ -122,6 +122,13 @@ class UserCrudController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        
+        //detach roles
+        //se quitan todos los roles que pertenecen al user numero $id
+        $user->roles()->detach();
+        //se borra el user
+        $user->delete();
+        return redirect('managment');
     }
 }
