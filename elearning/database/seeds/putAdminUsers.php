@@ -12,23 +12,23 @@ class putAdminUsers extends Seeder
     public function run()
     {
         DB::table('users')->insert([	
-            "name" => "Pablo Araya",
-            "password" => bcrypt("admin1"),
-            "email" => "pabloarayane0211@gmail.com",
+            "name" => "Admin",
+            "password" => bcrypt("12345"),
+            "email" => "admin@admin.com",
             "sex" => "Male",
             "country" => "Costa Rica"
         ]);
         DB::table('users')->insert([	
-            "name" => "Sergio Villegas",
-            "password" => bcrypt("admin1"),
-            "email" => "villevillegas2@gmail.com",
+            "name" => "Admin2",
+            "password" => bcrypt("12345"),
+            "email" => "admin2@admin.com",
             "sex" => "Male",
             "country" => "Costa Rica"
         ]);
         DB::table('users')->insert([    
-            "name" => "Eduardo Villegas",
-            "password" => bcrypt("admin1"),
-            "email" => "eduardo2@gmail.com",
+            "name" => "Estudiante Ulate",
+            "password" => bcrypt("12345"),
+            "email" => "estudiante@estudiante.com",
             "sex" => "Male",
             "country" => "Costa Rica"
         ]);

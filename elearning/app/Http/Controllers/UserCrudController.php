@@ -22,6 +22,7 @@ class UserCrudController extends Controller
     {
         //
         $users = User::orderBy('created_at','desc')->get();
+        
         return view('user.userIndex', compact('users'));
     }
 
@@ -33,6 +34,7 @@ class UserCrudController extends Controller
     public function create()
     {
         $roles = DB::table('role')->get();
+        //$availableRoles = DB::table('role')->get();
         return view('user.userCreate', compact('roles'));
         
     }
@@ -77,7 +79,7 @@ class UserCrudController extends Controller
         
         
         Session::flash('message', 'Resource Created Successfully!');
-        return redirect('managment');
+        return redirect('user');
     }
 
     /**
@@ -100,6 +102,16 @@ class UserCrudController extends Controller
     public function edit($id)
     {
         //
+        $user = User::find($id);
+        $availableRoles = DB::table('role')->get();
+
+        $userRoleID = 0;
+        $userRoleName = "";
+        foreach ($user->roles as $role) {
+            $userRoleName = $role->name;
+            $userRoleID = $role->id_role;
+        }
+        return view('user.userEdit',compact("user","availableRoles","userRoleName","userRoleID"));
     }
 
     /**
@@ -112,6 +124,23 @@ class UserCrudController extends Controller
     public function update(Request $request, $id)
     {
         //
+        echo "HEEEYYY";
+         $this->validate($request, [
+            'name' => 'required|alpha_num|min:3|max:32',
+            'email' => 'required|email',
+            'password' => 'required|min:3|confirmed',
+            'password_confirmation' => 'required|min:3',
+            'id_role' => 'required'
+        ]);
+
+        $userToUpdate = User::findOrFail($id);
+        //$resourceUpdate = $request->all();
+        $userToUpdate->update($request->all());
+        $theRoleID = $request->input('id_role');  
+        
+        $userToUpdate->roles()->attach($theRoleID,['status' => 1]);
+
+        return redirect('user')->with('success','User updated successfully');
     }
 
     /**
@@ -129,6 +158,6 @@ class UserCrudController extends Controller
         $user->roles()->detach();
         //se borra el user
         $user->delete();
-        return redirect('managment');
+        return redirect('user');
     }
 }
