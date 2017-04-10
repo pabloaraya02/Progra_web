@@ -48,7 +48,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                        <a onclick="hideSide()" class="btn btn-default" id="menu-toggle">Opciones de edición</a>
+                        <a onclick="hideSide()" class="btn btn-default" id="menu-toggle">OPCIONES</a>
                     </div>
                 </div>
             </div>

@@ -98,10 +98,10 @@
                     <a href="{{route('course.index')}}">Cursos</a>
                 </li>
                 <li>
-                    <a href="#">Roles</a>
+                    <a href="{{route('role.index')}}">Roles</a>
                 </li>
                 <li>
-                    <a href="#">Recursos</a>
+                    <a href="{{route('resource.index')}}">Recursos</a>
                 </li>
             </ul>
         </div>

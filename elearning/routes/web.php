@@ -30,6 +30,8 @@ Route::get('/managment', ['middleware' => 'checkAdmin:"Admin"', function () {
 
 Route::resource('user', 'UserCrudController');
 Route::resource('course', 'CourseCrudController');
+Route::resource('role', 'RoleCrudController');
+Route::resource('resource', 'ResourceCrudController');
 
 
 /*Route::resource('user', 
