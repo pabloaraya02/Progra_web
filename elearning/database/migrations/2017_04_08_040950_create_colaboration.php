@@ -22,6 +22,7 @@ class CreateColaboration extends Migration
             $table->integer('father_collaboration')->unsigned();
             $table->boolean('visible');
             $table->integer('id_assignment')->unsigned();
+            $table->foreign('id_user')->references('id_user')->on('users');
             $table->foreign('id_collaboration_type')->references('id_collaboration_type')->on('collaboration_type');
             $table->foreign('father_collaboration')->references('id_collaboration')->on('collaboration');
             $table->foreign('id_assignment')->references('id_assignment')->on('assignment');
