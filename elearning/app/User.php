@@ -36,7 +36,7 @@ class User extends Authenticatable
     }
 
     public function matricula(){
-        return $this->belongsTi('App\Enrollment');
+        return $this->belongsTo('App\Enrollment');
     }
     public function amIAdmin() {
 
@@ -93,6 +93,11 @@ class User extends Authenticatable
     public function setPasswordAttribute($pass){
 
         $this->attributes['password'] = bcrypt($pass);
+
+
+
+
+        
 
     }
 }

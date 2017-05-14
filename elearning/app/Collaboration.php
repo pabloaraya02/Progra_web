@@ -20,4 +20,9 @@ class Collaboration extends Model
     public function CollaborationChildren(){
     	return $this->hasMany('collaboration','id_collaboration');
     }
+    public function users(){
+
+    	return $this->hasMany('App\User');
+    }
 }
+/*Hello*/

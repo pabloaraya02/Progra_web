@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use App\Role;
 
 class RoleCrudController extends Controller
 {
@@ -17,7 +19,9 @@ class RoleCrudController extends Controller
      */
     public function index()
     {
-        return view('roles.roleIndex');
+        $roles = Role::orderBy('id_role','desc')->get();
+        return view('roles.roleIndex',compact('roles'));
+
         //
     }
 
@@ -51,6 +55,9 @@ class RoleCrudController extends Controller
     public function show($id)
     {
         //
+        $role = DB::table('role')->where('id_role',$id)->get();
+        $users = Role::find($id)->users;
+        return view('roles.roleShow',compact('role','users'));
     }
 
     /**
