@@ -125,7 +125,7 @@ class UserCrudController extends Controller
     public function update(Request $request, $id)
     {
         //
-        echo "HEEEYYY";
+        
          $this->validate($request, [
             'name' => 'required|alpha_num|min:3|max:32',
             'email' => 'required|email',

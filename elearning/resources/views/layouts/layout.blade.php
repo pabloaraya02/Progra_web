@@ -10,6 +10,7 @@
  {!! Html::style('css/bootstrap.css') !!}
  {!! Html::style('css/bootstrap.min.css') !!}
  {!! Html::style('css/simple-sidebar.css') !!}
+ {!! Html::style('js/jquery-ui-1.12.1.custom/jquery-ui.css') !!}
  
  <!-- Fonts -->
  <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
@@ -37,7 +38,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Elearnin') }}
+                        {{ config('app.name', 'Elearning') }}
                     </a>
                 </div>
 
@@ -117,6 +118,10 @@
  {!! Html::script('js/bootstrap.js') !!}
  {!! Html::script('js/bootstrap.min.js') !!}
  {!! Html::script('js/myJs.js') !!}
-
+ {!! Html::script('js/jquery-ui-1.12.1.custom/jquery-ui.js') !!}
+<script type="text/javascript">
+        $("#fechaInicio").datepicker();
+        $("#fechaFinal").datepicker();
+    </script>
 </body>
 </html>

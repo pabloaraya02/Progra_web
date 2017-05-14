@@ -12,7 +12,7 @@
                         <h1>Administrador - {{ Auth::user()->name }}</h1>
                             <div id="menu_edicion_cursos">
                                 <h3>Cursos</h3>
-                                <a href="#" class="btn btn-default" id="boton_agregar_curso">Agregar Nuevo Curso +</a>
+                                <a href="{{route('course.create')}}" class="btn btn-default" id="boton_agregar_curso">Agregar Nuevo Curso +</a>
                                 <table class='table'>
                                     <thead>
                                         <tr>

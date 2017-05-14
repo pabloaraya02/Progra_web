@@ -80,7 +80,19 @@ class RoleCrudController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|alpha_num|min:3|max:32',
+            'status' => 'required'
+        ]);
+
+        $userToUpdate = Role::findOrFail($id);
+        //$resourceUpdate = $request->all();
+        $userToUpdate->update($request->all());
+        $theRoleID = $request->input('id_role');  
+        
+        //$userToUpdate->roles()->attach($theRoleID,['status' => 1]);
+
+        return redirect('user')->with('success','User updated successfully');
     }
 
     /**
@@ -92,5 +104,13 @@ class RoleCrudController extends Controller
     public function destroy($id)
     {
         //
+        $role = Role::find($id);
+        
+        //detach roles
+        //se quitan todos los roles que pertenecen al role numero $id
+        $role->users()->detach();
+        //se borra el role
+        $role->delete();
+        return redirect('role');
     }
 }

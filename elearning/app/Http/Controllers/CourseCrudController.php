@@ -29,6 +29,7 @@ class CourseCrudController extends Controller
     public function create()
     {
         //
+        return view('course.courseCreate');
     }
 
     /**
