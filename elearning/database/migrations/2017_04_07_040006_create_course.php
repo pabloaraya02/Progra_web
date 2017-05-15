@@ -19,7 +19,7 @@ class CreateCourse extends Migration
             $table->integer('duration');//weeks 
             $table->date('start_date');
             $table->date('end_date');
-            $table->boolean('status');
+            $table->boolean('status')->nullable();
             //$table->timestamps();
         });
     }

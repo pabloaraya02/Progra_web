@@ -9,7 +9,8 @@ class Week extends Model
     //
     protected $table = 'week';
     protected $primaryKey = 'id_week';
-    protected $fillable = ['subject','visible','status','id_course'];
+    protected $fillable = ['subject','visible','status','start_date','end_date'];
+    public $timestamps = false;
     
     public function course(){
     	return $this->belongsTo('App\Course', 'id_course','id_course');

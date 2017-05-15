@@ -10,6 +10,7 @@ class Course extends Model
 
     protected $table = 'course';
     protected $primaryKey = 'id_course';
+    public $timestamps = false;
     //duration es cantidad de semanas creo
     protected $fillable = ['course_name','duration','start_date','end_date'];
 

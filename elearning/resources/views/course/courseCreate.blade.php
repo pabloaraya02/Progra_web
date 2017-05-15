@@ -5,17 +5,18 @@
 <h3>
 	Crear Curso
 </h3>
-    {!! Form::open(['url'=>'role','class'=>'form-horizontal']) !!}
+    {!! Form::open(['url'=>'course','class'=>'form-horizontal']) !!}
 
 
         <div class="form-group">
-            {!! Form::label('name', 'Nombre', ['class'=>'control-label col-md-2']) !!}
+            {!! Form::label('course_name', 'Nombre', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-7">
-                {!! Form::text('name', null,  ['class'=>'form-control']) !!}
-                {!! $errors->has('name')?$errors->first('nombre'):'' !!}
+                {!! Form::text('course_name', null,  ['class'=>'form-control']) !!}
+                {!! $errors->has('course_name')?$errors->first('course_name'):'' !!}
             </div>
         </div>
-        <div class="form-group">
+        
+        {{--<div class="form-group">
             {!! Form::label('duracion', 'Duraci&oacute;n en Semanas', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-7">
                 <select name="duracion">
@@ -42,65 +43,37 @@
                 </select>
                 {!! $errors->has('duracion')?$errors->first('duracion'):'' !!}
             </div>
-        </div>
+        </div>--}}
         <div class="form-group">
              {!! Form::label('fechaIniciolabel', 'Fecha Inicio', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-7">
-                {!! Form::date('fechaInicio', \Carbon\Carbon::now(),  ['id'=>'fechaInicio','class'=>'form-control']) !!}
+                {!! Form::date('start_date', null,  ['id'=>'start_date','class'=>'form-control']) !!}
             </div>
         </div>
 		<div class="form-group">
-             {!! Form::label('fechaFinalLbel', 'Fecha Inicio', ['class'=>'control-label col-md-2']) !!}
+             {!! Form::label('fechaFinalLbel', 'Fecha Final', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-7">
-                {!! Form::date('fechaFinal', null,  ['id'=>'fechaFinal','class'=>'form-control']) !!}
+                {!! Form::date('end_date', null,  ['id'=>'end_date','class'=>'form-control']) !!}
             </div>
         </div>
-		{{--s<div class="form-group">
-            {!! Form::label('password', 'Contrase&ntilde;a', ['class'=>'control-label col-md-2']) !!}
-            <div class="col-md-7">
-                {!! Form::password('password',['class'=>'form-control']) !!}
-                {!! $errors->has('password')?$errors->first('password'):'' !!}
-            </div>
-        </div>
-		<div class="form-group">
-            {!! Form::label('password_confirmation', 'Confirme Contrase&ntilde;a', ['class'=>'control-label col-md-2']) !!}
-            <div class="col-md-7">
-                {!! Form::password('password_confirmation',['class'=>'form-control']) !!}
-                {!! $errors->has('password_confirmation')?$errors->first('password_confirmation'):'' !!}
-            </div>
-        </div>
-		<div class="form-group">
-            {!! Form::label('country', 'Pa&iacute;s', ['class'=>'control-label col-md-2']) !!}
-            <div class="col-md-7">
-                {!! Form::text('country', null,  ['class'=>'form-control']) !!}
-                {!! $errors->has('country')?$errors->first('country'):'' !!}
-            </div>
-        </div>
-				
-		<div class="form-group">
-            {!! Form::label('sex', 'Sexo', ['class'=>'control-label col-md-2']) !!}
-            <div class="col-md-7">
-				<select name="sex">
-	                <option value="Masculino">Masculino</option>
-	                <option value="Femenino">Femenino</option>
-            	</select>
-                {!! $errors->has('sex')?$errors->first('sex'):'' !!}
-            </div>
-        </div>	
-
         <div class="form-group">
-            {!! Form::label('id_role','Role',['class'=>'control-label col-md-2']) !!}
-	        <div class="col-md-7">
-	            <select class='form-control' name="id_role">
-	                @foreach($roles as $role)
-	                    <option value="{{ $role->id_role }}">{{ $role->name}}</option>
-	                @endforeach
-	            </select>
-	             {!! $errors->has('id_role')?$errors->first('id_role'):'' !!}
-	        </div>
-    
+            {!! Form::label('duration', 'Duraci&oacute;n en Semanas', ['class'=>'control-label col-md-2']) !!}
+            <div class="col-md-7">
+                {!! Form::text('duration', null,  ['class'=>'form-control','id'=>'duration']) !!}
+                {!! $errors->has('duration')?$errors->first('duration'):'' !!}
+            </div>
         </div>
-		--}}
+        {{--<div class="form-group">
+            {!! Form::label('status', 'Estatus', ['class'=>'control-label col-md-2']) !!}
+            <div class="col-md-7">
+                <select name="status">
+                    <option value="1">Active</option>
+                    <option value="2">Desactivado</option>
+                </select>
+                {!! $errors->has('status')?$errors->first('status'):'' !!}
+            </div>
+        </div>  --}}
+		
 		
         <div class="form-group">
             <div class="col-md-offset-2 col-md-7">

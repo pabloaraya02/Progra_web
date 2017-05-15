@@ -120,8 +120,33 @@
  {!! Html::script('js/myJs.js') !!}
  {!! Html::script('js/jquery-ui-1.12.1.custom/jquery-ui.js') !!}
 <script type="text/javascript">
-        $("#fechaInicio").datepicker();
-        $("#fechaFinal").datepicker();
+        $("#start_date").datepicker({ dateFormat: 'yy-mm-dd' });
+        $("#end_date").datepicker({ dateFormat: 'yy-mm-dd' });
+        $("#start_date").on('change',function(e){
+            e.preventDefault();
+            calculateWeeksBetween($(this).val(),$('#end_date').val());    
+        });
+        $("#end_date").on('change',function(e){
+            e.preventDefault();
+            calculateWeeksBetween($(this).val(),$('#start_date').val());
+
+        });
+        function calculateWeeksBetween(date1, date2) {
+            // The number of milliseconds in one week
+            /*var ONE_WEEK = 1000 * 60 * 60 * 24 * 7;
+            // Convert both dates to milliseconds
+            var date1_ms = date1.getTime();
+            var date2_ms = date2.getTime();
+            // Calculate the difference in milliseconds
+            var difference_ms = Math.abs(date1_ms - date2_ms);
+            // Convert back to weeks and return hole weeks
+            return Math.floor(difference_ms / ONE_WEEK);
+               */ 
+            var a  = new Date(date1);
+            var b = new Date(date2);
+            var weeks = Math.round((a-b)/ 604800000);
+            $("#duration").val(weeks);
+        }   
     </script>
 </body>
 </html>

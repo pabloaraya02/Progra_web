@@ -18,6 +18,8 @@ class CreateWeekt extends Migration
             $table->string('subject');
             $table->boolean('visible');
             $table->boolean('status');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->integer('id_course')->unsigned();
             $table->foreign('id_course')->references('id_course')->on('course');
             //$table->timestamps();

@@ -16,11 +16,32 @@
                                 <table class='table'>
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
+                                            
                                             <th>Nombre</th>
                                             <th>Duración</th>
+                                            <th>Fecha de inicio</th>
+                                            <th>Fecha de Final</th>
+                                            <th>Estatus</th>
+                                            <th>Ver</th>
+                                            <th>Editar</th>
+                                            <th>Eliminar</th>
                                         </tr>
                                     </thead>
+                                    <tbody>
+                                        @foreach($courses as $course)
+                                        <tr>
+                                            
+                                            <td>{{$course->course_name}}</td>
+                                            <td>{{$course->duration}}</td>
+                                            <td>{{$course->start_date}}</td>
+                                            <td>{{$course->end_date}}</td>
+                                            <td>{{$course->status}}</td>
+                                            <td><a class="btn btn-small btn-success" href="{{ URL::to('course/' . $course->id_course) }}">Ver</a></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        @endforeach()
+                                    </tbody>
                                 </table>
                             </div>
                         <a onclick="hideSide()" class="btn btn-default" id="menu-toggle">OPCIONES</a>
