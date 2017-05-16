@@ -3,13 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-class ResourceCrudController extends Controller
+use App\Week;
+class weekCrudController extends Controller
 {
-
-    public function __construct(){
-        $this->middleware('checkAdmin:"Admin"');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +13,6 @@ class ResourceCrudController extends Controller
      */
     public function index()
     {
-        return view('resources.resourceIndex');
         //
     }
 
@@ -29,7 +24,6 @@ class ResourceCrudController extends Controller
     public function create()
     {
         //
-        return view('resources.resourceCreate');
     }
 
     /**
@@ -52,6 +46,9 @@ class ResourceCrudController extends Controller
     public function show($id)
     {
         //
+        $week = Week::find($id);
+        $resources =  $week->resources;
+        return view('week.weekShow',compact('week','resources'));
     }
 
     /**

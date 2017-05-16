@@ -49,19 +49,32 @@
                             <th>Tema</th>
                             <th>Fecha de inicio</th>
                             <th>Fecha de Final</th>
+                            <th>Tiene Recursos</th>
                             <th>Ver</th>
                             <th>Editar</th>
                         </tr>
                     </thead>
                     <tbody>
                     	@foreach($weeks as $week)
+                    	@if(empty($week->resources[0]))
                         <tr> 
                             <td>{{$week->subject}}</td>
                             <td>{{$week->start_date}}</td>
                             <td>{{$week->end_date}}</td>
-                            <td><a class="btn btn-small btn-success" href="{{ URL::to('week/' . $week->id_week) }}">Ver</a></td>
-                            <td></td>
+                            <th>Sin recursos</th>
+                            <td><a class="btn btn-small btn-info" href="{{ URL::to('week/' . $week->id_week) }}">Ver</a></td>
+                            <td><a class="btn btn-small btn-success" href="{{ URL::to('resource/create') }}">+ Agregar Recursos</a></td>
                         </tr>
+                        @else
+                        <tr> 
+                            <td>{{$week->subject}}</td>
+                            <td>{{$week->start_date}}</td>
+                            <td>{{$week->end_date}}</td>
+                            <th>Con Recursos</th>
+                            <td><a class="btn btn-small btn-info" href="{{ URL::to('week/' . $week->id_week) }}">Ver</a></td>
+                            <td><a class="btn btn-small btn-success" href="{{ URL::to('resource/create') }}">+ Agregar Recursos</a></td>
+                        </tr>
+                        @endif
                         @endforeach()
                     </tbody>
                 </table>

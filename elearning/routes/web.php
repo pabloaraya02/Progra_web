@@ -32,6 +32,7 @@ Route::resource('user', 'UserCrudController');
 Route::resource('course', 'CourseCrudController');
 Route::resource('role', 'RoleCrudController');
 Route::resource('resource', 'ResourceCrudController');
+Route::resource('week', 'weekCrudController');
 
 
 /*Route::resource('user', 

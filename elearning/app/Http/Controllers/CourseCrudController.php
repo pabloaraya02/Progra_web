@@ -110,7 +110,9 @@ class CourseCrudController extends Controller
     {
         //
         $course = Course::find($id);
-        $weeks = Course::find($id)->weeks;
+        //$weeks = Course::find($id)->weeks;
+        $weeks = $course->weeks;
+       
         return view('course.courseShow',compact('course','weeks'));
     }
 
