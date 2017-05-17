@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ResourceCrudController extends Controller
 {
+
+    private $folder = '/public/media/profiles';
 
     public function __construct(){
         $this->middleware('checkAdmin:"Admin"');
@@ -17,7 +20,8 @@ class ResourceCrudController extends Controller
      */
     public function index()
     {
-        return view('resources.resourceIndex');
+        $files = File::files($this->folder);
+        return view('resources.resourceIndex')->with('images',$files);
         //
     }
 
@@ -38,9 +42,22 @@ class ResourceCrudController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        $file = Input::file('filename');
+        $name = $file->getClientOriginalName();
+        $upload = $file->move($this->folder.'/resource', $name);
+
+        if (!$upload) {
+            Session::flash('message', 'Guardado correctamente');
+            Session::flash('class', 'success');
+        }
+        else{
+            Session::flash('message', 'Error al guardar');
+            Session::flash('class', 'danger');
+        }
+
+        return Redirect::to('/resource');
     }
 
     /**

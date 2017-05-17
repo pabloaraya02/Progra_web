@@ -28,6 +28,10 @@ Route::get('/managment', ['middleware' => 'checkAdmin:"Admin"', function () {
     return view('dashboard',compact('user'));
 }])->name('managment');
 
+
+Route::get('/destroy/{id}', 'ResourceCrudController@destroy');
+Route::post('/store','ResourceCrudController@store');
+
 Route::resource('user', 'UserCrudController');
 Route::resource('course', 'CourseCrudController');
 Route::resource('role', 'RoleCrudController');
