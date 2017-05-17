@@ -3,12 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Course;
 use App\Week;
 use App\Resource_type;
 use App\Resource;
+
+use Illuminate\Support\Facades\File;
+
 class ResourceCrudController extends Controller
 {
+
+    private $folder = '/public/media/profiles';
 
     public function __construct(){
         $this->middleware('checkAdmin:"Admin"');
@@ -20,7 +26,8 @@ class ResourceCrudController extends Controller
      */
     public function index()
     {
-        return view('resources.resourceIndex');
+        $files = File::files($this->folder);
+        return view('resources.resourceIndex')->with('images',$files);
         //
     }
 
@@ -52,8 +59,9 @@ class ResourceCrudController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($request)
     {
+
         //
         $rules = array(
             'name' => 'required',
@@ -66,48 +74,38 @@ class ResourceCrudController extends Controller
         
         $resource = $request->all();
         
-        
-
-        //$theNewUser = DB::table('users')->where('email', '=', $request()->email())->get();
         //se ccrea el curso y se obtiene el curso desde la base que se acaba de crear.
         $theNewResource = Resource::create($resource);
         $theWeek = $theNewResource->week;
         $theCourse = $theWeek->course;
 
-        /*$theNewCourseID = $theNewCourse->id_course;
 
-        //aqui vamos a calcular cuantas semanas vamos a crear en la base basado en las semanas del curso
-        //$theRoleID = $request->input('id_role');
-        //llenamos un array con la cantidad de semanas 
-        $weeksArray = array();     
-        $duracion = $request->duration;
-
-        $weekStartDate = $request->start_date;
-        //date('Y-m-d', strtotime($weekStartDate. ' + 7 days'));
-        $week_start_date=$weekStartDate;
-        for($x=1;$x<=$duracion;$x++){
-
-                //$theWeek = new Week(['subject'=>'','visible'=>1,'status'=>1]);
-            $week_end_date = date('Y-m-d', strtotime($week_start_date. ' +6 days'));
-            $weeksArray[] = new Week(['subject'=>'',
-                                        'visible'=>1,
-                                        'status'=>1,
-                                        'start_date'=>$week_start_date, 
-                                        'end_date'=>$week_end_date]);
-            $week_start_date = date('Y-m-d', strtotime($week_start_date. ' +7 days'));
-        }
-        //
-
-        
-        $theNewCourse = Course::find($theNewCourseID);
-        //$theNewCourse->weeks()->saveMany($weekssss);
-        $theNewCourse->weeks()->saveMany($weeksArray);
-
-        //$theNewUser->roles()->attach($theRoleID,['status' => 1]);
-        
-        
-        Session::flash('message', 'Course Created Successfully!');*/
+        //Session::flash('message', 'Resource Created Successfully!');
         return redirect('course/' . $theCourse->id_course);
+
+    }
+
+
+public function store2()
+    {
+
+        
+
+        $file = Input::file('filename');
+        $name = $file->getClientOriginalName();
+        $upload = $file->move($this->folder.'/resource', $name);
+
+        if (!$upload) {
+            Session::flash('message', 'Guardado correctamente');
+            Session::flash('class', 'success');
+        }
+        else{
+            Session::flash('message', 'Error al guardar');
+            Session::flash('class', 'danger');
+        }
+
+        return Redirect::to('/resource');
+
     }
 
     /**

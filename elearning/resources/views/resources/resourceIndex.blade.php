@@ -13,6 +13,20 @@
                             <div id="menu_edicion_resource">
                                 <h3>Recursos</h3>
                                 <a href="#" class="btn btn-default" id="boton_agregar_recurso">Agregar Nuevo Recurso +</a>
+                                    <input type="file" name="filename" id="filename"/>
+                                    <input type="submit" class="btn btn-default" id="file-save" value="Guardar"/>    
+                                </form>
+
+                                    <div class="alert alert-{{ Session::get('class') }}">{{ Session::get('message') }}</div>
+
+                                <div id="file_uploaded">
+                                    <h4>Recursos:</h4>
+                                    <ul>
+                    
+                                    </ul>
+                                    
+                                </div>
+
                                 <table class='table'>
                                     <thead>
                                         <tr>
