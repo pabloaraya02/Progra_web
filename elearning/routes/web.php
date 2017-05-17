@@ -33,6 +33,7 @@ Route::resource('course', 'CourseCrudController');
 Route::resource('role', 'RoleCrudController');
 Route::resource('resource', 'ResourceCrudController');
 Route::resource('week', 'weekCrudController');
+Route::get('resource/create/{courseId?}/{weekId?}',"ResourceCrudController@create");
 
 
 /*Route::resource('user', 

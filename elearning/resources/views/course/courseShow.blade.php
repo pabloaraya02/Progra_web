@@ -63,7 +63,7 @@
                             <td>{{$week->end_date}}</td>
                             <th>Sin recursos</th>
                             <td><a class="btn btn-small btn-info" href="{{ URL::to('week/' . $week->id_week) }}">Ver</a></td>
-                            <td><a class="btn btn-small btn-success" href="{{ URL::to('resource/create') }}">+ Agregar Recursos</a></td>
+                            <td><a class="btn btn-small btn-success" href="{{ URL::to('resource/create/'. $course->id_course . '/' . $week->id_week) }}">+ Agregar Recursos</a></td>
                         </tr>
                         @else
                         <tr> 
@@ -72,7 +72,7 @@
                             <td>{{$week->end_date}}</td>
                             <th>Con Recursos</th>
                             <td><a class="btn btn-small btn-info" href="{{ URL::to('week/' . $week->id_week) }}">Ver</a></td>
-                            <td><a class="btn btn-small btn-success" href="{{ URL::to('resource/create') }}">+ Agregar Recursos</a></td>
+                            <td><a class="btn btn-small btn-success" href="{{ URL::to('resource/create/'. $course->id_course . '/' . $week->id_week) }}">+ Agregar Recursos</a></td>
                         </tr>
                         @endif
                         @endforeach()

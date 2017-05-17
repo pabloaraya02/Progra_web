@@ -10,6 +10,7 @@ class Resource extends Model
     protected $table = 'Resource';
     protected $primaryKey = 'id_resource';
     protected $fillable = ['name','url','id_resource_type','resource_father','visible','sequence','notes','status','id_week'];
+    public $timestamps = false;
     
     /*This is the self reference relationship*/
     public function resourceFather(){

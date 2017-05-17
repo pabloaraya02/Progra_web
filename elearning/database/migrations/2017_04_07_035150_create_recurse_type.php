@@ -15,7 +15,7 @@ class CreateRecurseType extends Migration
     {
         Schema::create('resource_type', function (Blueprint $table) {
             $table->increments('id_resource_type');
-            $table->string('resource_name');
+            $table->string('resource_type_name');
             //$table->timestamps();
         });
     }
