@@ -87,13 +87,11 @@ class ResourceCrudController extends Controller
 
 
 public function store2()
-    {
-
-        
-
+    {  
+        Session::flash('message', 'Probando lineda');
         $file = Input::file('filename');
         $name = $file->getClientOriginalName();
-        $upload = $file->move($this->folder.'/resource', $name);
+        $upload = $file->move($this->folder, $name);
 
         if (!$upload) {
             Session::flash('message', 'Guardado correctamente');

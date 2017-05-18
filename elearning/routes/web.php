@@ -30,7 +30,7 @@ Route::get('/managment', ['middleware' => 'checkAdmin:"Admin"', function () {
 
 
 Route::get('/destroy/{id}', 'ResourceCrudController@destroy');
-Route::post('/store','ResourceCrudController@store2');
+Route::post('/store2','ResourceCrudController@store2');
 
 Route::resource('user', 'UserCrudController');
 Route::resource('course', 'CourseCrudController');
