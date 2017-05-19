@@ -29,8 +29,6 @@ Route::get('/managment', ['middleware' => 'checkAdmin:"Admin"', function () {
 }])->name('managment');
 
 
-Route::get('/destroy/{id}', 'ResourceCrudController@destroy');
-Route::post('/store2','ResourceCrudController@store2');
 
 Route::resource('user', 'UserCrudController');
 Route::resource('course', 'CourseCrudController');
@@ -39,8 +37,15 @@ Route::resource('resource', 'ResourceCrudController');
 Route::resource('week', 'weekCrudController');
 Route::get('resource/create/{courseId?}/{weekId?}',"ResourceCrudController@create");
 
+Route::get('upload', function () {
+    return view('pages.upload');
+});
+
+Route::post('upload/upload', 'ResourceCrudController@upload');
+
 
 /*Route::resource('user', 
 	['middleware' => 'auth',
 	 'uses' => 'UserCrudController']);*/
 
+//Route::get('/destroy/{id}', 'ResourceCrudController@destroy');
