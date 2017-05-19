@@ -9,8 +9,18 @@ use App\Week;
 use App\Resource_type;
 use App\Resource;
 
+
+
+
 use Illuminate\Support\Facades\File;
 
+
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Storage;
+use Validator;
+use Redirect;
+use Request;
+use Session;
 class ResourceCrudController extends Controller
 {
 
@@ -86,26 +96,27 @@ class ResourceCrudController extends Controller
     }
 
 
-public function store2()
+public function store2($request)
     {
 
         
 
-        $file = Input::file('filename');
-        $name = $file->getClientOriginalName();
-        $upload = $file->move($this->folder.'/resource', $name);
-
-        if (!$upload) {
-            Session::flash('message', 'Guardado correctamente');
-            Session::flash('class', 'success');
+        //$file = Input::file('filename');
+        $file = $request->thefile('thefile');
+        // $name = $file->getClientOriginalName();
+        //$upload = $file->move($this->folder.'/resource', $name);
+        //$upload = $file->move($this->folder.'/resource', $name);
+        /*if (!$upload) {
+            //Session::flash('message', 'Guardado correctamente');
+            //Session::flash('class', 'success');
         }
         else{
-            Session::flash('message', 'Error al guardar');
-            Session::flash('class', 'danger');
-        }
+            //Session::flash('message', 'Error al guardar');
+            //Session::flash('class', 'danger');
+        }*/
 
-        return Redirect::to('/resource');
-
+        //return Redirect::to('/resource');
+         return redirect('course');
     }
 
     /**
