@@ -4,13 +4,14 @@
 
 
     @if($courseId === null || $weekId === null)
-        <h2>Crear Recurso</h2>
+        <h2>Agregar Recurso</h2>
     @else
-        <h2>Crear Recurso</h2> <h3>{{$course->course_name}}</h3>  <h3>Semana: {{$week->start_date}}  -  {{$week->end_date}}</h3>
+        <h2>Agregar Recurso</h2> <h3>{{$course->course_name}}</h3>  <h3>Semana: {{$week->start_date}}  -  {{$week->end_date}}</h3>
     @endif
 	
 
-    {!! Form::open(['url'=>'resource','class'=>'form-horizontal']) !!}
+    <!-- {!! Form::open(['url'=>'resource','class'=>'form-horizontal']) !!} -->
+    {!! Form::open(array('url'=>'upload/upload','method'=>'POST', 'files'=>true, 'class'=>'form-horizontal')) !!}
 
 
         <div class="form-group">
@@ -52,9 +53,33 @@
             </div>
         </div>
 
+        <div class="about-section">
+           <div class="text-content">
+             <div class="span7 offset1">
+                @if(Session::has('success'))
+                  <div class="alert-box success">
+                    <h2>{!! Session::get('success') !!}</h2>
+                  </div>
+                @endif
+                <div class="secure">Cargar Archivo</div>
+                
+                <div class="control-group">
+                    <div class="controls">
+                        {!! Form::file('image') !!}
+                        <p class="errors">{!!$errors->first('image')!!}</p>
+                        @if(Session::has('error'))
+                            <p class="errors">{!! Session::get('error') !!}</p>
+                        @endif
+                    </div>
+                </div>
+                <div id="success" class="col-md-offset-2 col-md-0"> </div>
+              </div>
+           </div>
+        </div>
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-7">
-                {!! Form::submit('Guardar',  ['class'=>'btn btn-primary']) !!}
+                {!! Form::submit('Guardar', array('class'=>'btn btn-danger')) !!}
             </div>
         </div>
     {!! Form::close() !!}
