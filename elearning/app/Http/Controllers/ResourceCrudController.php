@@ -15,8 +15,6 @@ use App\Resource;
 use Validator;
 use Redirect;
 use Session;
-
-
 class ResourceCrudController extends Controller
 {
 
@@ -90,6 +88,7 @@ class ResourceCrudController extends Controller
         return redirect('course/' . $theCourse->id_course);
 
     }
+
 
     /**
      * Display the specified resource.

@@ -29,6 +29,7 @@ Route::get('/managment', ['middleware' => 'checkAdmin:"Admin"', function () {
 }])->name('managment');
 
 
+
 Route::resource('user', 'UserCrudController');
 Route::resource('course', 'CourseCrudController');
 Route::resource('role', 'RoleCrudController');
@@ -47,3 +48,4 @@ Route::post('upload/upload', 'ResourceCrudController@upload');
 	['middleware' => 'auth',
 	 'uses' => 'UserCrudController']);*/
 
+//Route::get('/destroy/{id}', 'ResourceCrudController@destroy');

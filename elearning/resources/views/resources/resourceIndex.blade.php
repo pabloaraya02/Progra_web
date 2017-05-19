@@ -35,9 +35,17 @@
                         <a onclick="hideSide()" class="btn btn-default" id="menu-toggle">OPCIONES</a>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        
+                        
+                    </div>
+                </div>
             </div>
         </div>
         <!-- /#page-content-wrapper -->
+
+        
 
  
 
