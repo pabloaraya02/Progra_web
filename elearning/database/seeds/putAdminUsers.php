@@ -32,6 +32,12 @@ class putAdminUsers extends Seeder
             "sex" => "Male",
             "country" => "Costa Rica"
         ]);
-        
+        DB::table('users')->insert([    
+            "name" => "Profe Zumbado",
+            "password" => bcrypt("12345"),
+            "email" => "profe@profe.com",
+            "sex" => "Male",
+            "country" => "Costa Rica"
+        ]);
     }
 }

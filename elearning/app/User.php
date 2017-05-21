@@ -35,8 +35,8 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Role','user_role','id_user','id_role');
     }
 
-    public function matricula(){
-        return $this->belongsTo('App\Enrollment');
+    public function matriculas(){
+        return $this->hasMany('App\Enrollment','id_user','id_user');
     }
     public function amIAdmin() {
 
@@ -52,28 +52,26 @@ class User extends Authenticatable
     }
     public function amIStudent() {
         //return in_array(1, $this->roles()->pluck('role_id')->all());
-        $admin = $this->roles->where('role_id', 1)->first();
-
-        if($admin == 'Admin'){
-            return true;
-
-        }else{
-
-            return false;
+        $admin = false;
+        foreach($this->roles as $role){
+            if($role->name == "Student"){
+                $admin = true;
+                break;
+            }
         }
+        return $admin;
          
     }
     public function amITeacher() {
-        //return in_array(1, $this->roles()->pluck('role_id')->all());
-        $admin = $this->roles->where('role_id', 1)->first();
 
-        if($admin == 'Admin'){
-            return true;
-
-        }else{
-
-            return false;
+        $admin = false;
+        foreach($this->roles as $role){
+            if($role->name == "Teacher"){
+                $admin = true;
+                break;
+            }
         }
+        return $admin;
          
     }
     public function hasRole($role)
