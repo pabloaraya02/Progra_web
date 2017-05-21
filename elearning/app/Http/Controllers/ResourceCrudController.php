@@ -82,10 +82,11 @@ class ResourceCrudController extends Controller
         $theNewResource = Resource::create($resource);
         $theWeek = $theNewResource->week;
         $theCourse = $theWeek->course;
+        upload();
 
 
         //Session::flash('message', 'Resource Created Successfully!');
-        return redirect('course/' . $theCourse->id_course);
+        
 
     }
 
