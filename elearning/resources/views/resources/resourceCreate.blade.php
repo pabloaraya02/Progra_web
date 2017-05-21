@@ -11,7 +11,7 @@
 	
 
     <!-- {!! Form::open(['url'=>'resource','class'=>'form-horizontal']) !!} -->
-    {!! Form::open(array('url'=>'upload/upload','method'=>'POST', 'files'=>true, 'class'=>'form-horizontal')) !!}
+    {!! Form::open(array('url'=>'resource','method'=>'POST', 'files'=>true, 'class'=>'form-horizontal')) !!}
 
 
         <div class="form-group">
