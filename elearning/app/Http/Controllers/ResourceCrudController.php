@@ -63,7 +63,7 @@ class ResourceCrudController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($request)
+    public function store(Request $request)
     {
 
         //
@@ -82,8 +82,12 @@ class ResourceCrudController extends Controller
         $theNewResource = Resource::create($resource);
         $theWeek = $theNewResource->week;
         $theCourse = $theWeek->course;
-        upload();
+        
+        
+        $this->upload();
 
+
+        return redirect('course/' . $theCourse->id_course);
 
         //Session::flash('message', 'Resource Created Successfully!');
         
