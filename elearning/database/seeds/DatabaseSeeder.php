@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(putAdminUsers::class);
         $this->call(assingAdminRoleToAdmins::class);
         $this->call(ResourceType::class);
+        $this->call(putEnrollments::class);
     }
 }

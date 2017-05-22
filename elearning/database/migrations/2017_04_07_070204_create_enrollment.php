@@ -19,7 +19,7 @@ class CreateEnrollment extends Migration
             $table->integer('year');
             $table->integer('id_course')->unsigned();
             $table->integer('id_user')->unsigned();
-            $table->dateTime('enrollment_date');
+            $table->dateTime('enrollment_date')->nullable();
             $table->foreign('id_course')->references('id_course')->on('course');
             $table->foreign('id_user')->references('id_user')->on('users');
             //$table->foreign()->references()->on();
