@@ -48,7 +48,8 @@ class weekCrudController extends Controller
         //
         $week = Week::find($id);
         $resources =  $week->resources;
-        return view('week.weekShow',compact('week','resources'));
+        $course = $week->course;
+        return view('week.weekShow',compact('week','resources','course'));
     }
 
     /**
